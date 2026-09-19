@@ -1,0 +1,143 @@
+@import "tailwindcss";
+@import "https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&display=swap";
+
+@theme {
+  --color-void: #05070b;
+  --color-surface: #0b1018;
+  --color-surface-2: #101824;
+
+  --color-ink: #f4f7fb;
+  --color-ink-soft: #b7c2d0;
+  --color-ink-muted: #8c99ab;
+  --color-ink-dim: #637091;
+
+  --color-cyan: #68e7ff;
+  --color-cyan-bright: #5ceaff;
+  --color-cyan-deep: #117595;
+  --color-indigo: #7b8cff;
+
+  --color-line: rgba(104, 231, 255, 0.14);
+  --color-line-strong: rgba(104, 231, 255, 0.22);
+
+  --font-display: "Clash Display", "Clash Display Placeholder", ui-sans-serif,
+    system-ui, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  --radius-xl2: 1.5rem;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-line);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    background-color: var(--color-void);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: rgba(104, 231, 255, 0.28);
+    color: #ffffff;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .text-gradient {
+    background: linear-gradient(
+      120deg,
+      #ffffff 0%,
+      var(--color-cyan) 55%,
+      var(--color-indigo) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .glass {
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.05),
+      rgba(255, 255, 255, 0.02)
+    );
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid var(--color-line);
+  }
+
+  .glass-strong {
+    background: rgba(11, 16, 24, 0.72);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid var(--color-line-strong);
+  }
+
+  .grid-bg {
+    background-image: linear-gradient(
+        to right,
+        rgba(104, 231, 255, 0.05) 1px,
+        transparent 1px
+      ),
+      linear-gradient(to bottom, rgba(104, 231, 255, 0.05) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+
+  .glow-cyan {
+    box-shadow: 0 0 0 1px rgba(104, 231, 255, 0.22),
+      0 0 40px -8px rgba(104, 231, 255, 0.45);
+  }
+
+  .mask-fade-b {
+    -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+  }
+}
+
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+.animate-float-slow {
+  animation: float-slow 7s ease-in-out infinite;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.6;
+  }
+  70% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
